@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { obtenerProductores } from "./helpers/getAdmin";
-
+import NavOverLay from "./Fragments/Overlay";
+import LoginPage from "./Fragments/P_Login";
+import "./CSS/Pagina_Login.css";
+import "./CSS/Pagina_Inicio.css";
 
 function App() {
   useEffect(() => {
@@ -11,9 +14,15 @@ function App() {
     cargarProductores();
   }, )
   return (
-    <div className="App">
-        <h1>Hola</h1>
-    </div>
+    <main className="App"> 
+      <NavOverLay />
+      
+      <LoginPage />
+    </main>
+
+      
+
+
   );
 }
 

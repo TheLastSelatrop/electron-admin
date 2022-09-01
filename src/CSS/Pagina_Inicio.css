@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2? family = Allura & display = swap');
+@import url('https://fonts.googleapis.com/css2? family = Allura & family = Nada + Tú + Podrías + Hacer & display = intercambiar');
+@import url('https://fonts.googleapis.com/css2? family = Allura & family = Nada + Tú + Podrías + Hacer & display = intercambiar');
+
+#NavBar {
+    width: 100%;
+    height: 45px;
+    background-color: #050818!important;    
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-app-region: drag;
+    justify-content: space-between;
+    position: relative;
+    z-index: 50;
+}
+
+#IcoNav{
+    -webkit-app-region: no-drag;
+    max-width: 40px;
+    max-height: 40px;
+    
+}
+
+#backHome{
+    -webkit-app-region: drag;
+    position: absolute;
+    left: 10px;
+    top: -5px;
+}
+
+#HeadLoginCard{
+    position: absolute;
+    left: 1%;
+    top: -22%;
+    width: 280px;
+    height: 60px;
+}
+
+button {
+    -webkit-app-region: no-drag;
+}
+
+
+.nav-link {
+    color:#ffffff!important;
+    -webkit-app-region: no-drag;
+}
+
+
+/*Parte de la redes sociales*/
+.redes {
+    background-color: #ffffff;
+    text-align: right;
+    padding: 0.1em;
+}
+
+.redes .image{
+    text-align: left;
+    max-height: 30px;
+    
+}
+.redes .circulo {
+    background-color: #ffffff;
+    color: #646464;
+    display: inline-block;
+    border-radius: 2em;
+    border-color: #ffffff;
+    width: 2em;
+    height: 2em;
+    font-size: 1.2em;
+    line-height: 2em;
+    text-align: center;
+    padding: 0;
+    margin: 0.3em;
+}
+
+
+.contenido {
+    padding: 1em;
+}
+
+.contenido {
+    color: lightgrey;
+}
+.contenido{
+    width: 15%;
+    margin: 1em 0;
+    border-top: 2px solid #BBB;
+}
+
+/*Parte de quienes somos*/
+.saludo {
+    text-align: right;
+    background-color: #fff4c2 ;
+    font-family: "Meddon", "i";
+    font-style: italic;
+}
+
+.saludo2{
+    text-align: left;
+    background-color: #fff4c2 ;
+    font-family: 'Meddon', "i";
+    font-style: italic;
+}
+.saludo hr{
+    float: right;
+}
+
+/*Galeria*/
+.galeria {
+    background-color: #fff4c2;
+    padding: 2em;
+}
+
+/*Formulario de contacto*/
+.contacto {
+    padding: 2em;
+}
+/*boton de formulario de contacto*/
+
+
+.footer {
+    padding: 1.5em;
+    text-align: center;
+}
+
+.carousel-caption {
+    text-shadow: 0px 2px #555;
+}
+
+.carousel-caption a {
+    color: #6ccba9;
+}
+
+/*Imagen de spiler*/
+.danger{
+
+    text-align:center;
+}
+
+/*Parrafo del la pagina de detalleshingeki*/
+.parrafo1{
+    margin: 15mm;
+    text-align: center;
+    background: white;
+    font-family: 'Meddon', cursive;
+    font-style: italic;
+    
+  
+}
+
+
+.no-gutters{
+    background-color: #fff4c2;
+    font-family: 'Meddon';
+    font-style: italic;
+    font-size:18px;
+  }
+
+.tituloshingeki{
+    font-family: 'Meddon';
+    font-style: italic;
+}
+
+.alertB{
+    position: relative;
+    left: 374px;
+    border: 1px solid #b8b525;
+    width: 360px;
+    height: auto;
+}
+

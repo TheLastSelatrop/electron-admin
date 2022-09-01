@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2? family = Allura & display = swap');
+@import url('https://fonts.googleapis.com/css2? family = Allura & family = Nada + Tú + Podrías + Hacer & display = intercambiar');
+@import url('https://fonts.googleapis.com/css2? family = Allura & family = Nada + Tú + Podrías + Hacer & display = intercambiar');
+
+.navbar-brand img {
+    max-height: 70px;
+}
+.bg-light {
+    background-color:#fff4c2!important;
+}
+.navbar-light .navbar-nav .nav-link {
+    color:rgb(75, 75, 75);   
+}
+
+.form-inline{
+    text-align:right;
+}
+
+/*Parte de la redes sociales*/
+.redes {
+    background-color: #ffffff;
+    text-align: right;
+    padding: 0.1em;
+}
+
+.redes .image{
+    text-align: left;
+    max-height: 30px;
+    
+}
+.redes .circulo {
+    background-color: #ffffff;
+    color: #646464;
+    display: inline-block;
+    border-radius: 2em;
+    border-color: #ffffff;
+    width: 2em;
+    height: 2em;
+    font-size: 1.2em;
+    line-height: 2em;
+    text-align: center;
+    padding: 0;
+    margin: 0.3em;
+}
+
+
+.contenido {
+    padding: 1em;
+}
+
+.contenido h6 {
+    color: lightgrey;
+}
+.contenido hr {
+    width: 15%;
+    margin: 1em 0;
+    border-top: 2px solid #BBB;
+}

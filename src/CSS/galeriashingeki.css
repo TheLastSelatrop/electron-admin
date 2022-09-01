@@ -1,0 +1,134 @@
+
+@import url('https://fonts.googleapis.com/css2? family = Allura & display = swap');
+@import url('https://fonts.googleapis.com/css2? family = Allura & family = Nada + Tú + Podrías + Hacer & display = intercambiar');
+@import url('https://fonts.googleapis.com/css2? family = Allura & family = Nada + Tú + Podrías + Hacer & display = intercambiar');
+
+
+.navbar-brand img {
+    max-height: 70px;
+}
+.bg-light {
+    background-color:#fff4c2!important;
+}
+.navbar-light .navbar-nav .nav-link {
+    color:rgb(75, 75, 75);   
+}
+
+.form-inline{
+    text-align:right;
+}
+
+.buscar{
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+
+/*Parte de la redes sociales*/
+.redes {
+    background-color: #ffffff;
+    text-align: right;
+    padding: 0.1em;
+}
+
+.redes .image{
+    text-align: left;
+    max-height: 30px;
+    
+}
+.redes .circulo {
+    background-color: #ffffff;
+    color: #646464;
+    display: inline-block;
+    border-radius: 2em;
+    border-color: #ffffff;
+    width: 2em;
+    height: 2em;
+    font-size: 1.2em;
+    line-height: 2em;
+    text-align: center;
+    padding: 0;
+    margin: 0.3em;
+}
+
+
+.contenido {
+    padding: 1em;
+}
+
+.contenido h6 {
+    color: lightgrey;
+}
+.contenido hr {
+    width: 15%;
+    margin: 1em 0;
+    border-top: 2px solid #BBB;
+}
+
+/**/
+/*Parte de quienes somos*/
+.cquienessomos{
+    background-color: #ffffff ;
+}
+.saludo {
+    text-align: right;
+    background-color: #ffffff ;
+    font-family: "Meddon", "i";
+    font-style: italic;
+}
+
+.saludo2{
+    text-align: left;
+    background-color:  #ffffff  ;
+    font-family: 'Meddon', "i";
+    font-style: italic;
+}
+.saludo hr{
+    float: right;
+}
+
+.no-gutters{
+    background-color: #fff4c2;
+    font-family: 'Meddon';
+    font-style: italic;
+    font-size:18px;
+  }
+
+.tituloshingeki{
+    font-family: 'Meddon';
+    font-style: italic;
+}
+
+
+/**/
+.ctitulo {
+    background-color: #ffffff ;
+}
+.tituloshingeki{
+    color: rgb(61, 61, 61);
+    font-size:15mm;
+}
+
+.cardtextshingeki {
+    color: rgb(100, 99, 99);
+}
+
+.cardtituloshingeki{
+    color: rgb(61, 61, 61);
+}
+/*Imagen de spiler*/
+.imagenshingeki{
+    width: 40rem;
+    height: 20rem;
+}
+
+/*Parrafo del la pagina de detalleshingeki*/
+.parrafo1{
+    margin: 15mm;
+    text-align: center;
+    background: rgb(221, 218, 218);
+    font-family: 'Meddon', cursive;
+    font-style: italic;
+    color: brown;
+    
+  
+}
