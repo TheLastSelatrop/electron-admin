@@ -1,19 +1,10 @@
-import { useEffect } from "react";
-import { obtenerProductores } from "./helpers/getAdmin";
+import Router from "./routes/Router";
 
 
 function App() {
-  useEffect(() => {
-    const cargarProductores = async()=>{
-      await obtenerProductores();
-    }
 
-    cargarProductores();
-  }, )
   return (
-    <div className="App">
-        <h1>Hola</h1>
-    </div>
+   <Router/>
   );
 }
 
