@@ -21,6 +21,13 @@ export const obtenerProductores = async()=>{
 
 }
 
+export const agregarProductor = async(productor) =>{
+ 
+        const {data} = await clienteAxios.post('/productores/nuevo', productor);
+        return data
+
+}
+
 export const obtenerTransportistas = async()=>{
     try {
         const {data} = await clienteAxios('transportista/');
