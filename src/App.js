@@ -1,9 +1,14 @@
 import { useEffect } from "react";
 import { obtenerProductores } from "./helpers/getAdmin";
-import NavOverLay from "./Fragments/Overlay";
-import LoginPage from "./Fragments/P_Login";
-import "./CSS/Pagina_Login.css";
-import "./CSS/Pagina_Inicio.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import NavOverLay from "./components/Overlay";
+import LoginPage from "./pages/P_Login";
+import UserControlPage from "./pages/P_ControlUse";
+
+import "./CSS/Global.css";
+import "./CSS/P_Login.css";
+
 
 function App() {
   useEffect(() => {
@@ -14,15 +19,15 @@ function App() {
     cargarProductores();
   }, )
   return (
-    <main className="App"> 
-      <NavOverLay />
-      
-      <LoginPage />
-    </main>
-
-      
-
-
+    <BrowserRouter>
+    <NavOverLay />
+    <Routes>
+      <Route path="/" element={<main className="App"></main>}/>
+      <Route path="/Main" element={<main className="App"></main>}/>
+      <Route path="/Login" element={<LoginPage /> }/>
+      <Route path="/UserControl" element={<UserControlPage />}/>
+    </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect, useRef } from "react";
 
-import image2 from "./assets/FondoLogin.jpg";
+import image2 from "../assets/FondoLogin.jpg";
 
 const LoginPage = () => {
     return ( 
