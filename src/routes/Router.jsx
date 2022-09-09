@@ -6,6 +6,7 @@ import Inicio from '../pages/Inicio'
 import Login from '../pages/Login'
 import Productores from '../pages/Productores'
 import Transportistas from '../pages/Transportistas'
+import Clientes from '../pages/Clientes'
 
 const Router = () => {
   return (
@@ -18,6 +19,7 @@ const Router = () => {
                <Route index element={<Inicio/>}/>
                <Route path='productores' element={<Productores/>}/>
                <Route path='transportistas' element={<Transportistas/>}/>
+               <Route path='clientes' element={<Clientes/>}/>
             </Route>
 
         </Routes>

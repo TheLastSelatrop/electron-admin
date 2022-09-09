@@ -16,7 +16,7 @@ const AdminLayout = () => {
                     <ContainerOpciones>
                         <SubtituloOpcion to={'productores'}>Productores</SubtituloOpcion>
                         <SubtituloOpcion to={'transportistas'}>Transportista</SubtituloOpcion>
-                        <SubtituloOpcion to={''}>Consultor</SubtituloOpcion>
+                        <SubtituloOpcion to={'clientes'}>Clientes</SubtituloOpcion>
                     </ContainerOpciones>
                 </div>
                 <div>
@@ -53,6 +53,7 @@ const SubtituloOpcion = styled(Link)`
   cursor: pointer;  
   text-decoration: none;
   color: white;
+  -webkit-app-region: no-drag;
 `;
 
 const ContainerOpciones = styled.div`
@@ -81,6 +82,7 @@ const Opciones = styled.nav`
 
 const Titulo = styled.h2`
     color: white;
+    -webkit-app-region: no-drag;
 `;
 
 const Navbar = styled.aside`
@@ -88,6 +90,7 @@ const Navbar = styled.aside`
     background-color: #222A2D;
     min-height: 100vh;
     width: 18% ;
+    -webkit-app-region: drag;
 `;
 
 const Container = styled.div`

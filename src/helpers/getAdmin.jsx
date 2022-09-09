@@ -1,6 +1,8 @@
+import axios from "axios";
 import clienteAxios from "../axios"
 
 
+// <---------------------------- admin ---------------------------->
 
 export const login = async (datos) =>{
     try {
@@ -9,6 +11,15 @@ export const login = async (datos) =>{
     } catch (error) {
         console.log(error)
     }
+}
+
+// <------------------------- productores ------------------------->
+
+export const agregarProductor = async(productor) =>{
+ 
+    const {data} = await clienteAxios.post('/productores/nuevo', productor);
+    return data
+
 }
 
 export const obtenerProductores = async()=>{
@@ -21,12 +32,33 @@ export const obtenerProductores = async()=>{
 
 }
 
-export const agregarProductor = async(productor) =>{
- 
-        const {data} = await clienteAxios.post('/productores/nuevo', productor);
-        return data
+export const editarProductores = async(clienteID,datos)=>{
+    try {
+        await clienteAxios.put(`admin/productores/actualizar/${ clienteID.toString() }`, datos)
+
+    } catch (error) {
+        console.log("Error GetAdmins.jsx | Tipo: Put | Act: editarProductores")
+        console.log(error)
+        console.log("Error GetAdmins.jsx ==================================")
+    }
 
 }
+
+export const borrarProductores = async(clienteID)=>{
+    try {
+        await clienteAxios.delete(`/admin/productores/eliminar/${ clienteID.toString() }`
+        ).then( res => console.log("Productores n° "+ clienteID + " borrado!"))
+
+    } catch (error) {
+        console.log("Error GetAdmins.jsx | Tipo: Del | Act: borrarProductores")
+        console.log(error)
+        console.log("Error GetAdmins.jsx ==================================")
+    }
+
+}
+
+
+// <------------------------ transportistas ------------------------>
 
 export const obtenerTransportistas = async()=>{
     try {
@@ -34,6 +66,72 @@ export const obtenerTransportistas = async()=>{
         return data
     } catch (error) {
         console.log(error)
+    }
+
+}
+
+export const editarTransportistas = async(clienteID)=>{
+    try {
+        await clienteAxios.put(`admin/transportista/actualizar/${ clienteID.toString() }`
+        ).then( res => console.log("Transportista n° "+ clienteID + " modificado!"))
+
+    } catch (error) {
+        console.log("Error GetAdmins.jsx | Tipo: Put | Act: editarTransportistas")
+        console.log(error)
+        console.log("Error GetAdmins.jsx ==================================")
+    }
+
+}
+
+export const borrarTransportistas = async(clienteID)=>{
+    try {
+        await clienteAxios.delete(`/admin/transportista/eliminar/${ clienteID.toString() }`
+        ).then( res => console.log("Transportistas n° "+ clienteID + " borrado!"))
+
+    } catch (error) {
+        console.log("Error GetAdmins.jsx | Tipo: Del | Act: borrarTransportistas")
+        console.log(error)
+        console.log("Error GetAdmins.jsx ==================================")
+    }
+
+}
+
+// <--------------------------- clientes --------------------------->
+
+export const obtenerClientes = async()=>{
+    try {
+        const {data} = await clienteAxios('/clientes');
+        return data
+    } catch (error) {
+        console.log("Error GetAdmins.jsx | Tipo: Get | Act: obtenerClientes")
+        console.log(error)
+        console.log("Error GetAdmins.jsx ==================================")
+    }
+
+}
+
+export const editarClientes = async(clienteID,datos)=>{
+    try {
+        await clienteAxios.put(`/admin/cliente/actualizar/${ clienteID.toString() }`, datos)
+        //.then( res => console.log("Cliente n° "+ clienteID + " borrado!"))
+
+    } catch (error) {
+        console.log("Error GetAdmins.jsx | Tipo: Put | Act: editarClientes")
+        console.log(error)
+        console.log("Error GetAdmins.jsx ==================================")
+    }
+
+}
+
+export const borrarClientes = async(clienteID)=>{
+    try {
+        await clienteAxios.delete(`/admin/cliente/eliminar/${ clienteID.toString() }`
+        ).then( res => console.log("Cliente n° "+ clienteID + " borrado!"))
+
+    } catch (error) {
+        console.log("Error GetAdmins.jsx | Tipo: Del | Act: borrarClientes")
+        console.log(error)
+        console.log("Error GetAdmins.jsx ==================================")
     }
 
 }

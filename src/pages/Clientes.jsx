@@ -3,29 +3,24 @@ import { faTrash, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
-import { agregarProductor, obtenerProductores, editarProductores, borrarProductores } from '../helpers/getAdmin';
+import { CardClientes } from '../components/CardClientes';
+import { agregarProductor, obtenerClientes, editarClientes, borrarClientes} from '../helpers/getAdmin';
 
-const Productores = () => {
-    const [productores, setProductores] = useState([]);
+const Clientes = () => {
+    const [clientes, setClientes] = useState([]);
     const [activeModal, setActiveModal] = useState(false);
     const [alerta, setAlerta] = useState({msg:'', error:false})
-    const [formValues, setFormValues] = useState({nombre: '', correo: '', password: ''});
-    const {nombre, correo , password} = formValues;
+    const [formValues, setFormValues] = useState({nombre: '', correo: ''});
+    const {nombre, correo } = formValues;
     useEffect(() => {
-        const cargarProductores = async()=>{
-          const respuesta = await obtenerProductores();
+        const cargarClientes = async()=>{
+          const respuesta = await obtenerClientes();
           console.log(respuesta)
-          setProductores(respuesta);
+          setClientes(respuesta);
         }
     
-        cargarProductores();
+        cargarClientes();
       },[] )
-
-      
-      const RemoveProductores = async(productoresID)=>{
-        await borrarProductores(productoresID)
-        window.location.reload();
-      }
 
       const onChange = ({target}) =>{
         setFormValues({
@@ -33,8 +28,16 @@ const Productores = () => {
           [target.name] : target.value
         });
       }
+
+
       const activateModal = () =>{
         setActiveModal(true);
+      }
+
+      const RemoveCliente = async(ClienteID)=>{
+        await borrarClientes(ClienteID)
+
+        window.location.reload();
       }
 
       const closeModal = () =>{
@@ -43,7 +46,7 @@ const Productores = () => {
 
       const handleAgregarProductor = async(e) =>{
         e.preventDefault();
-        if([correo, password, nombre].includes('')){
+        if([correo, nombre].includes('')){
           setAlerta({error: true, msg:'Todos los campos son obligatorios'});
           setTimeout(() => {
             setAlerta({error: false, msg:''})
@@ -53,7 +56,7 @@ const Productores = () => {
         try {
           const respuesta = await agregarProductor(formValues);
           setAlerta({error: false, msg:`${respuesta.msg}`})
-          setFormValues({correo: '', password: '', nombre: ''})
+          setFormValues({correo: '', nombre: ''})
           setTimeout(() => {
             setAlerta({error: false, msg:''})
           }, 2000);
@@ -64,14 +67,39 @@ const Productores = () => {
           }, 2000);
         }
       }
+      
+      const handleEditarCliente = async(e) =>{
+        e.preventDefault();
+        if([correo, nombre].includes('')){
+          setAlerta({error: true, msg:'Todos los campos son obligatorios'});
+          setTimeout(() => {
+            setAlerta({error: false, msg:''})
+          }, 2000);
+          return
+        }
+        try {
+          const respuesta = await editarClientes(formValues);
+          setAlerta({error: false, msg:`${respuesta.msg}`})
+          setFormValues({correo: '', nombre: ''})
+          setTimeout(() => {
+            setAlerta({error: false, msg:''})
+          }, 2000);
+        } catch (error) {
+          setAlerta({error: true, msg:`${error.response.data.msg}`})
+          setTimeout(() => {
+            setAlerta({error: false, msg:''})
+          }, 2000);
+        }
+      }
+
   return (
     <Div>
-        <Titulo>Productores</Titulo>
+        <Titulo>Clientes</Titulo>
 
         <AgregarContainer>
           <BotonAdd onClick={activateModal}> 
             <FontAwesomeIcon icon={faUserPlus}/>
-            Crear Productor
+            Crear Clientes
             </BotonAdd>
         </AgregarContainer>
         {/* -------------------FORM------------------------ */}
@@ -93,10 +121,6 @@ const Productores = () => {
                     <label htmlFor="correo">Correo :</label>
                     <InputForm name="correo" onChange={onChange} type="text" style={{marginLeft: '1.7rem'}} placeholder='ej: correo@correo.com' value={correo} />
                   </CampoForm>
-                  <CampoForm>
-                    <label htmlFor="password">Contraseña :</label>
-                    <InputForm name="password" onChange={onChange} type="password"  placeholder=''  value={password}/>
-                  </CampoForm>
                   <BotonAdd type='submit'>Agregar Productor</BotonAdd>
               </Form>
             </ContainerForm>
@@ -114,21 +138,8 @@ const Productores = () => {
           </Thead>
           <tbody>
             {/* <tr> */}
-            {productores.length > 0 ? productores.map(({ID, NOMBRE, CORREO})=>(
-                <Tr key={ID}>
-                    <td>{NOMBRE}</td>
-                    <td>{CORREO}</td>
-                    <button>
-                      <Icono onClick={activateModal}>
-                        <FontAwesomeIcon style={{color: 'blue'}} icon={faPenToSquare} />
-                      </Icono>
-                    </button>
-                    <button>
-                      <Icono onClick={()=>{RemoveProductores(ID)}} id={productores.ID}>
-                        <FontAwesomeIcon style={{color: 'red'}} icon={faTrash}/>
-                      </Icono>
-                    </button>
-                </Tr>
+            {clientes.length > 0 ? clientes.map((cliente)=>(
+                <CardClientes cliente={cliente} onChange={onChange} />
             )):'no hay'}
             {/* </tr> */}
         </tbody>
@@ -227,4 +238,4 @@ const Div = styled.div`
   flex-direction: column;
   align-items: center;
 `;
-export default Productores
+export default Clientes
