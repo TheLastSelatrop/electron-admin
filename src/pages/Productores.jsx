@@ -37,7 +37,8 @@ const Productores = () => {
         setActiveModal(true);
       }
       const closeModal = () =>{
-        setActiveModal(false)
+        setActiveModal(false)        
+        window.location.reload();
       }
 
       const handleAgregarProductor = async(e) =>{

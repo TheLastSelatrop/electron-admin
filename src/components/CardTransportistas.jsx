@@ -29,7 +29,7 @@ export const CardTransportistas = ({cliente}) => {
     }
 
     const handleEditarTransport = async(e) =>{
-      //e.preventDefault()
+      e.preventDefault()
           if([CORREO, NOMBRE].includes('')){
               setAlerta({error: true, msg:'Todos los campos son obligatorios'});
               setTimeout(() => {
@@ -65,7 +65,7 @@ export const CardTransportistas = ({cliente}) => {
             <input value={Form.correo} onChange={onChange} name="correo"/>
         </td>
         <Icono>
-            <button type='submit' id={ID} onClick={onClick}>
+            <button type='submit' id={ID} onClick={handleEditarTransport}>
                 <FontAwesomeIcon style={{color: 'blue'}} icon={faPenToSquare} />
             </button>
             <button id={ID} onClick={()=>{RemoveTransportista(ID)}}>
