@@ -12,9 +12,11 @@ const Router = () => {
   return (
     <BrowserRouter>
         <Routes>
+          {/* Ruta publica */}
             <Route path='/'>
                 <Route index element={<Login/>}/>
             </Route>
+          {/* Ruta Protegida */}
             <Route path='/inicio' element={<AdminLayout/>}>
                <Route index element={<Inicio/>}/>
                <Route path='productores' element={<Productores/>}/>

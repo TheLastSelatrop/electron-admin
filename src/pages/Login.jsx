@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useState , useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import AuthContext from "../context/AuthProvider";
 import { login } from "../helpers/getAdmin";
+import useAuth from "../hooks/useAuth";
 import fondo from './img/fondo.jpg';
 
+
+
 const Login = () => {
+    const { setAuth } = useAuth();
     const [formValues, setFormValues] = useState({correo: '', password: ''})
     const {correo, password} = formValues;
 
@@ -19,11 +24,22 @@ const Login = () => {
 
     const onSubmit = async(e) =>{
         e.preventDefault();
-       
+       try {
         const respuesta = await login(formValues);
-        if(respuesta.msg){
-            navigate('/inicio')
-        }
+        console.log(respuesta)
+        localStorage.setItem("token", respuesta.token);
+        setAuth(respuesta);
+        
+       } catch (error) {
+        setAlerta(error.response.data.msg);
+        
+       }
+        
+        
+        //if(respuesta.msg){
+        //  console.log(respuesta.msg)  
+          //navigate('/inicio')
+        //}
     }
 
   return (
