@@ -30,7 +30,7 @@ export const CardClientes = ({cliente}) => {
       }
 
     const handleEditarCliente = async(e) =>{
-    //e.preventDefault()
+    e.preventDefault()
         if([CORREO, NOMBRE].includes('')){
             setAlerta({error: true, msg:'Todos los campos son obligatorios'});
             setTimeout(() => {
@@ -64,7 +64,7 @@ export const CardClientes = ({cliente}) => {
                     </td>
                     
                     <Icono >
-                      <button type='submit' id={ID} onClick={onClick}>
+                      <button type='submit' id={ID} onClick={handleEditarCliente}>
                         <FontAwesomeIcon style={{color: 'blue'}} icon={faPenToSquare} />
                       </button>
                     </Icono>

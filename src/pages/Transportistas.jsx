@@ -33,6 +33,7 @@ const Transportistas = () => {
       }
       const closeModal = () =>{
         setActiveModal(false)
+        window.location.reload();
       }
       
       const handleAgregarTransportista = async(e) =>{
