@@ -3,6 +3,7 @@ import { faTrash, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
+import { CardProductores } from '../components/CardProductores';
 import { agregarProductor, obtenerProductores, editarProductores, borrarProductores } from '../helpers/getAdmin';
 
 const Productores = () => {
@@ -20,8 +21,7 @@ const Productores = () => {
     
         cargarProductores();
       },[] )
-
-      
+            
       const RemoveProductores = async(productoresID)=>{
         await borrarProductores(productoresID)
         window.location.reload();
@@ -36,7 +36,6 @@ const Productores = () => {
       const activateModal = () =>{
         setActiveModal(true);
       }
-
       const closeModal = () =>{
         setActiveModal(false)
       }
@@ -114,21 +113,8 @@ const Productores = () => {
           </Thead>
           <tbody>
             {/* <tr> */}
-            {productores.length > 0 ? productores.map(({ID, NOMBRE, CORREO})=>(
-                <Tr key={ID}>
-                    <td>{NOMBRE}</td>
-                    <td>{CORREO}</td>
-                    <button>
-                      <Icono onClick={activateModal}>
-                        <FontAwesomeIcon style={{color: 'blue'}} icon={faPenToSquare} />
-                      </Icono>
-                    </button>
-                    <button>
-                      <Icono onClick={()=>{RemoveProductores(ID)}} id={productores.ID}>
-                        <FontAwesomeIcon style={{color: 'red'}} icon={faTrash}/>
-                      </Icono>
-                    </button>
-                </Tr>
+            {productores.length > 0 ? productores.map((cliente)=>(
+                <CardProductores cliente={cliente} onChange={onChange} />
             )):'no hay'}
             {/* </tr> */}
         </tbody>
@@ -180,7 +166,6 @@ const ContainerForm = styled.div`
   padding: 10px 15px 10px 15px;
 `;
 
-
 const BotonAdd = styled.button`
   background-color:#64BC7C; 
   border: none;
@@ -201,10 +186,12 @@ const Icono = styled.td`
   cursor: pointer;
 
 `;
+
 const Titulo = styled.h2`
     color: black;
     text-align:center;
 `;
+
 const Thead = styled.thead`
   /* background-color: red; */
 `;

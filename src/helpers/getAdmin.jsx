@@ -34,7 +34,7 @@ export const obtenerProductores = async()=>{
 
 export const editarProductores = async(clienteID,datos)=>{
     try {
-        await clienteAxios.put(`admin/productores/actualizar/${ clienteID.toString() }`, datos)
+        await clienteAxios.put(`/admin/productor/actualizar/${ clienteID.toString() }`, datos)
 
     } catch (error) {
         console.log("Error GetAdmins.jsx | Tipo: Put | Act: editarProductores")
@@ -46,7 +46,7 @@ export const editarProductores = async(clienteID,datos)=>{
 
 export const borrarProductores = async(clienteID)=>{
     try {
-        await clienteAxios.delete(`/admin/productores/eliminar/${ clienteID.toString() }`
+        await clienteAxios.delete(`/admin/productor/eliminar/${ clienteID.toString() }`
         ).then( res => console.log("Productores n° "+ clienteID + " borrado!"))
 
     } catch (error) {
@@ -60,6 +60,14 @@ export const borrarProductores = async(clienteID)=>{
 
 // <------------------------ transportistas ------------------------>
 
+
+export const agregarTransportistas = async(transportista) =>{
+ 
+    const {data} = await clienteAxios.post('/transportista/registrar', transportista);
+    return data
+
+}
+
 export const obtenerTransportistas = async()=>{
     try {
         const {data} = await clienteAxios('transportista/');
@@ -72,7 +80,7 @@ export const obtenerTransportistas = async()=>{
 
 export const editarTransportistas = async(clienteID)=>{
     try {
-        await clienteAxios.put(`admin/transportista/actualizar/${ clienteID.toString() }`
+        await clienteAxios.put(`/admin/transportista/actualizar/${ clienteID.toString() }`
         ).then( res => console.log("Transportista n° "+ clienteID + " modificado!"))
 
     } catch (error) {
@@ -97,6 +105,13 @@ export const borrarTransportistas = async(clienteID)=>{
 }
 
 // <--------------------------- clientes --------------------------->
+
+export const agregarClientes = async(clientes) =>{
+ 
+    const {data} = await clienteAxios.post('/clientes/nuevo', clientes);
+    return data
+
+}
 
 export const obtenerClientes = async()=>{
     try {

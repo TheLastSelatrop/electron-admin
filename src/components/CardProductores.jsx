@@ -3,33 +3,33 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react'
 import styled from 'styled-components';
-import { editarClientes, borrarClientes} from '../helpers/getAdmin';
+import { editarProductores, borrarProductores } from '../helpers/getAdmin';
 
-export const CardClientes = ({cliente}) => {
+export const CardProductores = ({cliente}) => {    
     const {ID,CORREO,NOMBRE} = cliente;
     const [alerta, setAlerta] = useState({msg:'', error:false})
     const [Form, setForm] = useState({correo:CORREO, nombre:NOMBRE })
 
-    const onChange = ({target}) =>{
-      setForm({
-        ...Form,
-        [target.name] : target.value
-      });
-    }
-
-    const onClick = () => {
-        console.log(ID)
-        handleEditarCliente()
-    }
-
     
-    const RemoveCliente = async(ClienteID)=>{
-        await borrarClientes(ClienteID)
-
-        window.location.reload();
+    const onChange = ({target}) =>{
+        setForm({
+          ...Form,
+          [target.name] : target.value
+        });
       }
 
-    const handleEditarCliente = async(e) =>{
+      const onClick = () => {
+          console.log(ID)
+          handleEditarProductor()
+      }
+      
+      const RemoveProductor = async(ClienteID)=>{
+          await borrarProductores(ClienteID)
+  
+          window.location.reload();
+        }
+
+    const handleEditarProductor = async(e) =>{
     //e.preventDefault()
         if([CORREO, NOMBRE].includes('')){
             setAlerta({error: true, msg:'Todos los campos son obligatorios'});
@@ -39,46 +39,42 @@ export const CardClientes = ({cliente}) => {
             return
         }
         try {
-            const respuesta = await editarClientes(ID,Form);
+            const respuesta = await editarProductores(ID,Form);
             setAlerta({error: false, msg:`${respuesta.msg}`})
             setForm({correo: '', nombre: ''})
             setTimeout(() => {
             setAlerta({error: false, msg:''})
             }, 2000);
         } catch (error) {
+            
             setAlerta({error: true, msg:`${error.response.data.msg}`})
             setTimeout(() => {
             setAlerta({error: false, msg:''})
             }, 2000);
         }
     }
-
-
   return (
-        <Tr key={ID}>
-                    <td>
-                      <input value={Form.nombre} onChange={onChange} name="nombre"/>
-                    </td>
-                    <td>
-                        <input value={Form.correo} onChange={onChange} name="correo"/>
-                    </td>
-                    
-                    <Icono >
-                      <button type='submit' id={ID} onClick={onClick}>
-                        <FontAwesomeIcon style={{color: 'blue'}} icon={faPenToSquare} />
-                      </button>
-                    </Icono>
-                    
-                    <button id={ID} onClick={()=>{RemoveCliente(ID)}}>
-                      <Icono>
-                        <FontAwesomeIcon style={{color: 'red'}} icon={faTrash}/>
-                      </Icono>
-                    </button>
-                </Tr>
-    
+    <Tr key={ID}>
+        {
+        alerta.msg.length > 0 && <Alerta error={alerta.error} >{alerta.msg}</Alerta> 
+        }
+        <td>
+            <input value={Form.nombre} onChange={onChange} name="nombre"/>
+        </td>
+        <td>
+            <input value={Form.correo} onChange={onChange} name="correo"/>
+        </td>
+        <Icono>
+            <button type='submit' id={ID} onClick={onClick}>
+                <FontAwesomeIcon style={{color: 'blue'}} icon={faPenToSquare} />
+            </button>
+            <button id={ID} onClick={()=>{RemoveProductor(ID)}}>
+                <FontAwesomeIcon style={{color: 'red'}} icon={faTrash}/>
+            </button>
+        </Icono>
+    </Tr>
   )
 }
-
 const Alerta = styled.p`
   text-align: center;
   color:  white;
@@ -101,4 +97,3 @@ const Tr = styled.tr`
   
 
 `;
-
