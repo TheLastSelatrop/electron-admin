@@ -12,9 +12,10 @@ export const AuthProvider = ({ children }) => {
         const autenticarAdmin = async () => {
             const token = localStorage.getItem('token')
             if(!token){
-
+                setCargando(false)
+                return
             }
-
+            
 
         }
 
