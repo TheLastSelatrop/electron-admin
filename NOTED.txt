@@ -12,7 +12,9 @@
 Manejo de errores en el login
 > alertas de campos vacios
 
-boton cerrar sesion
+
+
+-----------------boton cerrar sesion
 plazo: Lunes hasta las 18:00
 
 
@@ -22,7 +24,7 @@ plazo: Lunes hasta las 18:00
 errores/fallos:
 --------------------------------
 
-e.preventDefault() = e no definido
+// - TOKEN SESSION para cerar sesion : fallo 
 
 TypeError: error.response is undefined
 

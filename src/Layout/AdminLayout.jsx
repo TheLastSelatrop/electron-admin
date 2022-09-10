@@ -1,15 +1,20 @@
 import React from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import styled from 'styled-components'
+import { useNavigate } from "react-router-dom"
 
 const AdminLayout = () => {
+    const history = useNavigate();
+    const logOut = () =>{
+        localStorage.clear();
+        history('/');
+    }
   return (
     <Div>
         <Navbar>
             <Link to={'/inicio'} style={{textDecoration: 'none'}}>
                 <Titulo>Administrador MaipoGrande</Titulo>   
             </Link>
-            <hr />
            <Opciones>
                 <div>
                     <Tituloopcion>Usuarios</Tituloopcion>
@@ -40,6 +45,12 @@ const AdminLayout = () => {
                         <SubtituloOpcion to={''}>Informes</SubtituloOpcion>
                     </ContainerOpciones>
                 </div>
+                <div>
+                    <Tituloopcion>Account</Tituloopcion>
+                    <ContainerOpciones>
+                        <SubtituloOpcion2 onClick={()=>{logOut()}} >Cerrar Sesion</SubtituloOpcion2>
+                    </ContainerOpciones>
+                </div>
            </Opciones>
         </Navbar>
         <Container>
@@ -54,6 +65,12 @@ const SubtituloOpcion = styled(Link)`
   text-decoration: none;
   color: white;
   -webkit-app-region: no-drag;
+`;
+const SubtituloOpcion2 = styled.a`
+cursor: pointer;  
+text-decoration: none;
+color: white;
+-webkit-app-region: no-drag;
 `;
 
 const ContainerOpciones = styled.div`

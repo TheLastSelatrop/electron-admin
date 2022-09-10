@@ -29,16 +29,17 @@ const Login = () => {
         console.log(respuesta)
         localStorage.setItem("token", respuesta.token);
         setAuth(respuesta);
-        
+        navigate('/inicio')
        } catch (error) {
-        setAlerta(error.response.data.msg);
+        console.log(error.response.data.msg)
+        //setAlerta(error.response.data.msg);
         
        }
         
         
         //if(respuesta.msg){
         //  console.log(respuesta.msg)  
-          //navigate('/inicio')
+          //
         //}
     }
 

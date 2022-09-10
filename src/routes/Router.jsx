@@ -7,10 +7,13 @@ import Login from '../pages/Login'
 import Productores from '../pages/Productores'
 import Transportistas from '../pages/Transportistas'
 import Clientes from '../pages/Clientes'
+import { AuthProvider } from '../context/AuthProvider'
+
 
 const Router = () => {
   return (
     <BrowserRouter>
+    <AuthProvider>
         <Routes>
           {/* Ruta publica */}
             <Route path='/'>
@@ -25,6 +28,7 @@ const Router = () => {
             </Route>
 
         </Routes>
+    </AuthProvider>
     </BrowserRouter>
   )
 }
