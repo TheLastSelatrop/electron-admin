@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { CardClientes } from '../components/CardClientes';
-import { agregarProductor, obtenerClientes, editarClientes, borrarClientes} from '../helpers/getAdmin';
+import { agregarClientes, obtenerClientes, editarClientes, borrarClientes} from '../helpers/getAdmin';
 
 const Clientes = () => {
     const [clientes, setClientes] = useState([]);

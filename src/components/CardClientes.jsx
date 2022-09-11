@@ -38,6 +38,7 @@ export const CardClientes = ({cliente}) => {
             setForm({correo: '', nombre: ''})
             setTimeout(() => {
             setAlerta({error: false, msg:''})
+            window.location.reload()            
             }, 2000);
         } catch (error) {
             setAlerta({error: true, msg:`${error.response.data.msg}`})

@@ -17,10 +17,6 @@ export const CardTransportistas = ({cliente}) => {
       });
     }
 
-    const onClick = () => {
-        console.log(ID)
-        handleEditarTransport()
-    }
 
     const RemoveTransportista = async(ClienteID)=>{
       await borrarTransportistas(ClienteID)
@@ -43,6 +39,7 @@ export const CardTransportistas = ({cliente}) => {
               setForm({correo: '', nombre: ''})
               setTimeout(() => {
               setAlerta({error: false, msg:''})
+              window.location.reload()
               }, 2000);
           } catch (error) {
               

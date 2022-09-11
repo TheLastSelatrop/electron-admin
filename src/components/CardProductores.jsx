@@ -31,7 +31,7 @@ export const CardProductores = ({cliente}) => {
 
     const handleEditarProductor = async(e) =>{
     e.preventDefault()
-        if([CORREO, NOMBRE].includes('')){
+        if([Form.nombre, Form.correo].includes('')){
             setAlerta({error: true, msg:'Todos los campos son obligatorios'});
             setTimeout(() => {
             setAlerta({error: false, msg:''})
@@ -44,6 +44,7 @@ export const CardProductores = ({cliente}) => {
             setForm({correo: '', nombre: ''})
             setTimeout(() => {
             setAlerta({error: false, msg:''})
+            window.location.reload()
             }, 2000);
         } catch (error) {
             
@@ -59,9 +60,6 @@ export const CardProductores = ({cliente}) => {
         alerta.msg.length > 0 && <Alerta error={alerta.error} >{alerta.msg}</Alerta> 
       }
       <Tr key={ID}>
-          {
-          alerta.msg.length > 0 && <Alerta error={alerta.error} >{alerta.msg}</Alerta> 
-          }
           <td>
               <input value={Form.nombre} onChange={onChange} name="nombre"/>
           </td>
