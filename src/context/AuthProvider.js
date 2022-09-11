@@ -7,7 +7,6 @@ const AuthContext = createContext({});
 export const AuthProvider = ({ children }) => {
     const [auth, setAuth] = useState({});
     const [cargando, setCargando] = useState(true)
-    const [carrito, setCarrito] = useState([])
     const navigate = useNavigate()
     const {pathname} = useLocation();
     const [config, setConfig] = useState({})
@@ -16,10 +15,10 @@ export const AuthProvider = ({ children }) => {
         const autenticarAdmin = async () => {
             const token = localStorage.getItem('token')
             if(!token){
+                console.log("el token es: "+ token)
                 setCargando(false)
                 return
-            }
-            
+            }            
             const config = {
                 headers:{
                     "Content-Type": "application/json",
@@ -32,29 +31,25 @@ export const AuthProvider = ({ children }) => {
                 setAuth(data)
                 setConfig(config)
 
-                // console.log(data.ID_ROL)
-                const local = JSON.parse(localStorage.getItem('carrito'))
-                // console.log(local.length > 0)
-                // console.log(auth.ID_ROL)
-                if(local){
-                    setCarrito(local); // no tocar
-
-                }
-
-                if(pathname !== '/' && auth.ID_ROL === 2 && local.length > 0){
-                    setCarrito(local);
+                while ((token == null) && (pathname === '/inicio' || pathname === '/inicio/productores' || pathname === '/inicio/transportistas' || pathname === '/inicio/clientes')){
+                    navigate('/')
                     return
                 }
-
+                                
                 if(pathname === '/'){
 
                     if(auth.ID_ROL === 2){
-                        setCarrito(local);
-
+                        console.log("el token es: "+ token)
                         navigate('/inicio')
                         return
                     }
                 }
+
+                //if(pathname === '/inicio' || pathname === '/inicio/productores' || pathname === '/inicio/transportistas' || pathname === '/inicio/clientes' ){
+                //    console.log("Asegurado")
+                //}
+
+
                 
             } catch (error) {
                 console.log(error)
@@ -67,11 +62,11 @@ export const AuthProvider = ({ children }) => {
         }
         autenticarAdmin();
 
-    },[navigate,setCarrito,pathname,auth.ID_ROL])
+    },[navigate,pathname,auth.ID_ROL])
     
 
     return (
-        <AuthContext.Provider value={{setAuth, auth, cargando, carrito, setCarrito, config}}> 
+        <AuthContext.Provider value={{setAuth, auth, cargando, config}}> 
             {children}
         </AuthContext.Provider>
     )

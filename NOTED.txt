@@ -9,8 +9,8 @@
 --------------------------------eliminar clientes
 --------------------------------editar clientes
 
-Manejo de errores en el login
-> alertas de campos vacios
+------------Manejo de errores en el login
+------------> alertas de campos vacios
 
 
 
@@ -24,8 +24,10 @@ plazo: Lunes hasta las 18:00
 errores/fallos:
 --------------------------------
 
-// - TOKEN SESSION para cerar sesion : fallo 
+// - TOKEN SESSION para cerar sesion : fallo INTERMITENTE 
 
 TypeError: error.response is undefined
+
+error de campos registrar cliente
 
 

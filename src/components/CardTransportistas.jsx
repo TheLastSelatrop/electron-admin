@@ -54,36 +54,44 @@ export const CardTransportistas = ({cliente}) => {
       }
 /******************************************************************************************/
   return (
-    <Tr key={ID}>
-        {
+    <>
+      {
         alerta.msg.length > 0 && <Alerta error={alerta.error} >{alerta.msg}</Alerta> 
-        }
-        <td>
-            <input value={Form.nombre} onChange={onChange} name="nombre"/>
-        </td>
-        <td>
-            <input value={Form.correo} onChange={onChange} name="correo"/>
-        </td>
-        <Icono>
-            <button type='submit' id={ID} onClick={handleEditarTransport}>
-                <FontAwesomeIcon style={{color: 'blue'}} icon={faPenToSquare} />
-            </button>
-            <button id={ID} onClick={()=>{RemoveTransportista(ID)}}>
-                <FontAwesomeIcon style={{color: 'red'}} icon={faTrash}/>
-            </button>
-        </Icono>
-    </Tr>
+      }
+      <Tr key={ID}>
+          {
+          alerta.msg.length > 0 && <Alerta error={alerta.error} >{alerta.msg}</Alerta> 
+          }
+          <td>
+              <input value={Form.nombre} onChange={onChange} name="nombre"/>
+          </td>
+          <td>
+              <input value={Form.correo} onChange={onChange} name="correo"/>
+          </td>
+          <Icono>
+              <button type='submit' id={ID} onClick={handleEditarTransport}>
+                  <FontAwesomeIcon style={{color: 'blue'}} icon={faPenToSquare} />
+              </button>
+              <button id={ID} onClick={()=>{RemoveTransportista(ID)}}>
+                  <FontAwesomeIcon style={{color: 'red'}} icon={faTrash}/>
+              </button>
+          </Icono>
+      </Tr>
+    </>
   )
 }
 const Alerta = styled.p`
-  text-align: center;
-  color:  white;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border-radius: 20px;
-  text-transform: capitalize;
-  background-color: ${props => props.error ? 'red' : 'blue'}
-
+text-align: center;
+color:  white;
+padding-top: 5px;
+padding-bottom: 5px;
+border-radius: 20px;
+text-transform: capitalize;
+background-color: ${props => props.error ? 'red' : 'blue'};
+position: fixed;
+top: 10%;
+left: 22%;
+width: 19rem;
 `;
 
 const Icono = styled.td`

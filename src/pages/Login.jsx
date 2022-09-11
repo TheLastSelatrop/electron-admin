@@ -11,6 +11,7 @@ import fondo from './img/fondo.jpg';
 const Login = () => {
     const { setAuth } = useAuth();
     const [formValues, setFormValues] = useState({correo: '', password: ''})
+    const [alerta, setAlerta] = useState({msg:'', error:false})
     const {correo, password} = formValues;
 
     const navigate = useNavigate();
@@ -24,6 +25,13 @@ const Login = () => {
 
     const onSubmit = async(e) =>{
         e.preventDefault();
+        if([correo, password].includes('')){
+          setAlerta({error: true, msg:'Todos los campos son obligatorios'});
+          setTimeout(() => {
+            setAlerta({error: false, msg:''})
+          }, 2000);
+          return
+        }
        try {
         const respuesta = await login(formValues);
         console.log(respuesta)
@@ -31,9 +39,12 @@ const Login = () => {
         setAuth(respuesta);
         navigate('/inicio')
        } catch (error) {
-        console.log(error.response.data.msg)
+        console.log(error.response)
         //setAlerta(error.response.data.msg);
-        
+        setAlerta({error: true, msg:'Datos erroneos! Verifique credenciales'});
+          setTimeout(() => {
+            setAlerta({error: false, msg:''})
+          }, 2000);
        }
         
         
@@ -45,8 +56,12 @@ const Login = () => {
 
   return (
     <Fondo>
+      <div>
         <Div onSubmit={onSubmit}>
             <Titulo>Inicio de Sesion</Titulo>
+            {
+              alerta.msg.length > 0 && <Alerta error={alerta.error} >{alerta.msg}</Alerta> 
+            }
             <div>
                 <Input name="correo" type="text"  value={correo} onChange={onChange}  placeholder="correo" />
             </div>
@@ -55,9 +70,23 @@ const Login = () => {
             </div>
             <Button type="submit">Iniciar</Button>
         </Div>
+      </div>
     </Fondo>
   )
 }
+const Alerta = styled.p`
+  position: fixed;
+  top: 140px;
+  width: 20rem;
+  text-align: center;
+  color:  white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 20px;
+  text-transform: capitalize;
+  background-color: ${props => props.error ? 'red' : 'blue'}
+
+`;
 
 const Input = styled.input`
   width: 17rem;  

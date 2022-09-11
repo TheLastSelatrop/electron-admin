@@ -10,8 +10,8 @@ const Clientes = () => {
     const [clientes, setClientes] = useState([]);
     const [activeModal, setActiveModal] = useState(false);
     const [alerta, setAlerta] = useState({msg:'', error:false})
-    const [formValues, setFormValues] = useState({nombre: '', correo: ''});
-    const {nombre, correo } = formValues;
+    const [formValues, setFormValues] = useState({nombre: '', correo: '', password: ''});
+    const {nombre, correo, password } = formValues;
     useEffect(() => {
         const cargarClientes = async()=>{
           const respuesta = await obtenerClientes();
@@ -34,20 +34,14 @@ const Clientes = () => {
         setActiveModal(true);
       }
 
-      const RemoveCliente = async(ClienteID)=>{
-        await borrarClientes(ClienteID)
-
-        window.location.reload();
-      }
-
       const closeModal = () =>{
         setActiveModal(false)
         window.location.reload();
       }
 
-      const handleAgregarProductor = async(e) =>{
+      const handleAgregarCliente = async(e) =>{
         e.preventDefault();
-        if([correo, nombre].includes('')){
+        if([correo, password, nombre].includes('')){
           setAlerta({error: true, msg:'Todos los campos son obligatorios'});
           setTimeout(() => {
             setAlerta({error: false, msg:''})
@@ -55,7 +49,7 @@ const Clientes = () => {
           return
         }
         try {
-          const respuesta = await agregarProductor(formValues);
+          const respuesta = await agregarClientes(formValues);
           setAlerta({error: false, msg:`${respuesta.msg}`})
           setFormValues({correo: '', nombre: ''})
           setTimeout(() => {
@@ -69,30 +63,6 @@ const Clientes = () => {
         }
       }
       
-      const handleEditarCliente = async(e) =>{
-        e.preventDefault();
-        if([correo, nombre].includes('')){
-          setAlerta({error: true, msg:'Todos los campos son obligatorios'});
-          setTimeout(() => {
-            setAlerta({error: false, msg:''})
-          }, 2000);
-          return
-        }
-        try {
-          const respuesta = await editarClientes(formValues);
-          setAlerta({error: false, msg:`${respuesta.msg}`})
-          setFormValues({correo: '', nombre: ''})
-          setTimeout(() => {
-            setAlerta({error: false, msg:''})
-          }, 2000);
-        } catch (error) {
-          setAlerta({error: true, msg:`${error.response.data.msg}`})
-          setTimeout(() => {
-            setAlerta({error: false, msg:''})
-          }, 2000);
-        }
-      }
-
   return (
     <Div>
         <Titulo>Clientes</Titulo>
@@ -113,7 +83,7 @@ const Clientes = () => {
               {
                 alerta.msg.length > 0 && <Alerta error={alerta.error} >{alerta.msg}</Alerta> 
               }
-              <Form onSubmit={handleAgregarProductor}>
+              <Form onSubmit={handleAgregarCliente}>
                   <CampoForm>
                     <label htmlFor="nombre">Nombre :</label>
                     <InputForm name='nombre' onChange={onChange} type="text" style={{marginLeft: '1.5rem'}} placeholder='Nombre' value={nombre} />
@@ -121,6 +91,10 @@ const Clientes = () => {
                   <CampoForm>
                     <label htmlFor="correo">Correo :</label>
                     <InputForm name="correo" onChange={onChange} type="text" style={{marginLeft: '1.7rem'}} placeholder='ej: correo@correo.com' value={correo} />
+                  </CampoForm>
+                  <CampoForm>
+                    <label htmlFor="password">Contraseña :</label>
+                    <InputForm name="password" onChange={onChange} type="password"  placeholder=''  value={password}/>
                   </CampoForm>
                   <BotonAdd type='submit'>Agregar Productor</BotonAdd>
               </Form>

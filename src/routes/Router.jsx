@@ -1,6 +1,5 @@
-
 import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import AdminLayout from '../Layout/AdminLayout'
 import Inicio from '../pages/Inicio'
 import Login from '../pages/Login'
@@ -26,7 +25,6 @@ const Router = () => {
                <Route path='transportistas' element={<Transportistas/>}/>
                <Route path='clientes' element={<Clientes/>}/>
             </Route>
-
         </Routes>
     </AuthProvider>
     </BrowserRouter>

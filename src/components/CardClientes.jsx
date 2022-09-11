@@ -16,12 +16,6 @@ export const CardClientes = ({cliente}) => {
         [target.name] : target.value
       });
     }
-
-    const onClick = () => {
-        console.log(ID)
-        handleEditarCliente()
-    }
-
     
     const RemoveCliente = async(ClienteID)=>{
         await borrarClientes(ClienteID)
@@ -31,7 +25,7 @@ export const CardClientes = ({cliente}) => {
 
     const handleEditarCliente = async(e) =>{
     e.preventDefault()
-        if([CORREO, NOMBRE].includes('')){
+        if([Form.correo, Form.nombre].includes('')){
             setAlerta({error: true, msg:'Todos los campos son obligatorios'});
             setTimeout(() => {
             setAlerta({error: false, msg:''})
@@ -55,26 +49,31 @@ export const CardClientes = ({cliente}) => {
 
 
   return (
-        <Tr key={ID}>
-                    <td>
-                      <input value={Form.nombre} onChange={onChange} name="nombre"/>
-                    </td>
-                    <td>
-                        <input value={Form.correo} onChange={onChange} name="correo"/>
-                    </td>
-                    
-                    <Icono >
-                      <button type='submit' id={ID} onClick={handleEditarCliente}>
-                        <FontAwesomeIcon style={{color: 'blue'}} icon={faPenToSquare} />
-                      </button>
-                    </Icono>
-                    
-                    <button id={ID} onClick={()=>{RemoveCliente(ID)}}>
-                      <Icono>
-                        <FontAwesomeIcon style={{color: 'red'}} icon={faTrash}/>
-                      </Icono>
-                    </button>
-                </Tr>
+    <>
+      {
+        alerta.msg.length > 0 && <Alerta error={alerta.error} >{alerta.msg}</Alerta> 
+      }
+      <Tr key={ID}>
+        <td>
+          <input value={Form.nombre} onChange={onChange} name="nombre"/>
+        </td>
+        <td>
+            <input value={Form.correo} onChange={onChange} name="correo"/>
+        </td>
+          
+        <Icono >
+          <button type='submit' id={ID} onClick={handleEditarCliente}>
+            <FontAwesomeIcon style={{color: 'blue'}} icon={faPenToSquare} />
+          </button>
+        </Icono>
+          
+        <button id={ID} onClick={()=>{RemoveCliente(ID)}}>
+          <Icono>
+            <FontAwesomeIcon style={{color: 'red'}} icon={faTrash}/>
+          </Icono>
+        </button>
+      </Tr>
+    </>
     
   )
 }
@@ -86,8 +85,11 @@ const Alerta = styled.p`
   padding-bottom: 5px;
   border-radius: 20px;
   text-transform: capitalize;
-  background-color: ${props => props.error ? 'red' : 'blue'}
-
+  background-color: ${props => props.error ? 'red' : 'blue'};
+  position: fixed;
+  top: 10%;
+  left: 22%;
+  width: 19rem;
 `;
 
 const Icono = styled.td`
