@@ -61,10 +61,10 @@ export const CardProductores = ({cliente}) => {
       }
       <Tr key={ID}>
           <td>
-              <input value={Form.nombre} onChange={onChange} name="nombre"/>
+              <Input value={Form.nombre} onChange={onChange} name="nombre"/>
           </td>
           <td>
-              <input value={Form.correo} onChange={onChange} name="correo"/>
+              <Input value={Form.correo} onChange={onChange} name="correo"/>
           </td>
           <Icono>
               <button type='submit' id={ID} onClick={handleEditarProductor}>
@@ -100,6 +100,15 @@ const Icono = styled.td`
 
 const Tr = styled.tr`
   text-align: left;
-  
-
+  background-color: #2c3034!important;
 `;
+
+const td = styled.td`
+background-color: #2c3034!important;
+`
+
+const Input = styled.input`
+background-color: #2c3034;
+border: #2c3034;
+color: white;
+`

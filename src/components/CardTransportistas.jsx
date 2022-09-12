@@ -26,7 +26,7 @@ export const CardTransportistas = ({cliente}) => {
 
     const handleEditarTransport = async(e) =>{
       e.preventDefault()
-          if([CORREO, NOMBRE].includes('')){
+          if([Form.correo, Form.nombre].includes('')){
               setAlerta({error: true, msg:'Todos los campos son obligatorios'});
               setTimeout(() => {
               setAlerta({error: false, msg:''})
@@ -56,23 +56,20 @@ export const CardTransportistas = ({cliente}) => {
         alerta.msg.length > 0 && <Alerta error={alerta.error} >{alerta.msg}</Alerta> 
       }
       <Tr key={ID}>
-          {
-          alerta.msg.length > 0 && <Alerta error={alerta.error} >{alerta.msg}</Alerta> 
-          }
           <td>
-              <input value={Form.nombre} onChange={onChange} name="nombre"/>
+            <Input value={Form.nombre} onChange={onChange} name="nombre"/>
           </td>
           <td>
-              <input value={Form.correo} onChange={onChange} name="correo"/>
+            <Input value={Form.correo} onChange={onChange} name="correo"/>
           </td>
-          <Icono>
-              <button type='submit' id={ID} onClick={handleEditarTransport}>
-                  <FontAwesomeIcon style={{color: 'blue'}} icon={faPenToSquare} />
-              </button>
-              <button id={ID} onClick={()=>{RemoveTransportista(ID)}}>
-                  <FontAwesomeIcon style={{color: 'red'}} icon={faTrash}/>
-              </button>
-          </Icono>
+        <Icono>
+            <button type='submit' id={ID} onClick={handleEditarTransport}>
+                <FontAwesomeIcon style={{color: 'blue'}} icon={faPenToSquare} />
+            </button>
+            <button id={ID} onClick={()=>{RemoveTransportista(ID)}}>
+                <FontAwesomeIcon style={{color: 'red'}} icon={faTrash}/>
+            </button>
+        </Icono>
       </Tr>
     </>
   )
@@ -99,7 +96,15 @@ const Icono = styled.td`
 
 const Tr = styled.tr`
   text-align: left;
-  
-
+  background-color: #2c3034!important;
 `;
 
+const td = styled.td`
+background-color: #2c3034!important;
+`
+
+const Input = styled.input`
+background-color: #2c3034;
+border: #2c3034;
+color: white;
+`

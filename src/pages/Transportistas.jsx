@@ -101,10 +101,9 @@ const Transportistas = () => {
         <Table>
           <Thead>
             <Tr>
-              <th>Nombre</th>
-              <th>Correo</th>
-              <th>Editar</th>
-              <th>Eliminar</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Accion</th>
             </Tr>
           </Thead>
           <tbody>
@@ -121,39 +120,6 @@ const Transportistas = () => {
   )
 }
 
-const Titulo = styled.h2`
-    color: black;
-    text-align:center;
-`;
-const ContainerTransportistas = styled.div`
-  display: flex; 
-  flex-wrap: wrap;
-  justify-content:center;
-  margin: 0 auto;
-  width: 70%;
-  gap: 1rem;
-`;
-const Thead = styled.thead`
-  /* background-color: red; */
-`;
-
-const Tr = styled.tr`
-  text-align: left;
-  
-
-`;
-const Icono = styled.td`
-  text-align: center;
-  cursor: pointer;
-
-`;
-
-const Table = styled.table`
-  width: 120%;
-  border: 1px gray  solid;
-  padding: 5px 15px 5px 15px;
-  border-radius: 10px;
-`;
 const Alerta = styled.p`
   text-align: center;
   color:  white;
@@ -211,6 +177,47 @@ const BotonAdd = styled.button`
 
 const AgregarContainer = styled.div`
   margin-bottom: 2rem;
+`;
+
+const Icono = styled.td`
+  text-align: center;
+  cursor: pointer;
+
+`;
+
+const Tbody = styled.tbody`
+border-collapse: collapse;
+`;
+
+const Titulo = styled.h2`
+    color: black;
+    text-align:center;
+`;
+
+const Thead = styled.thead`
+  background-color: #212529;
+  border-color: #32383e;
+  color: white;
+  border-collapse: collapse;
+`;
+
+const Tr = styled.tr`
+  text-align: left;
+  
+
+`;
+
+const Table = styled.table`
+  width: 120%;
+  border: 1px gray  solid;
+  padding: 5px 15px 5px 15px;
+  background-color: #212529;
+  border-color: #32383e;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 `;
 
 const Div = styled.div`

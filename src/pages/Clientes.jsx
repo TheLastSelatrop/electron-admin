@@ -105,10 +105,9 @@ const Clientes = () => {
         <Table>
           <Thead>
             <Tr>
-              <th>Nombre</th>
-              <th>Correo</th>
-              <th>Editar</th>
-              <th>Eliminar</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Accion</th>
             </Tr>
           </Thead>
           <tbody>
@@ -166,7 +165,6 @@ const ContainerForm = styled.div`
   padding: 10px 15px 10px 15px;
 `;
 
-
 const BotonAdd = styled.button`
   background-color:#64BC7C; 
   border: none;
@@ -187,12 +185,21 @@ const Icono = styled.td`
   cursor: pointer;
 
 `;
+
+const Tbody = styled.tbody`
+border-collapse: collapse;
+`;
+
 const Titulo = styled.h2`
     color: black;
     text-align:center;
 `;
+
 const Thead = styled.thead`
-  /* background-color: red; */
+  background-color: #212529;
+  border-color: #32383e;
+  color: white;
+  border-collapse: collapse;
 `;
 
 const Tr = styled.tr`
@@ -205,7 +212,13 @@ const Table = styled.table`
   width: 120%;
   border: 1px gray  solid;
   padding: 5px 15px 5px 15px;
-  border-radius: 10px;
+  background-color: #212529;
+  border-color: #32383e;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 `;
 
 const Div = styled.div`

@@ -56,41 +56,36 @@ export const CardClientes = ({cliente}) => {
       }
       <Tr key={ID}>
         <td>
-          <input value={Form.nombre} onChange={onChange} name="nombre"/>
+          <Input value={Form.nombre} onChange={onChange} name="nombre"/>
         </td>
         <td>
-            <input value={Form.correo} onChange={onChange} name="correo"/>
+          <Input value={Form.correo} onChange={onChange} name="correo"/>
         </td>
-          
-        <Icono >
-          <button type='submit' id={ID} onClick={handleEditarCliente}>
-            <FontAwesomeIcon style={{color: 'blue'}} icon={faPenToSquare} />
-          </button>
+        <Icono>
+            <button type='submit' id={ID} onClick={handleEditarCliente}>
+                <FontAwesomeIcon style={{color: 'blue'}} icon={faPenToSquare} />
+            </button>
+            <button id={ID} onClick={()=>{RemoveCliente(ID)}}>
+                <FontAwesomeIcon style={{color: 'red'}} icon={faTrash}/>
+            </button>
         </Icono>
-          
-        <button id={ID} onClick={()=>{RemoveCliente(ID)}}>
-          <Icono>
-            <FontAwesomeIcon style={{color: 'red'}} icon={faTrash}/>
-          </Icono>
-        </button>
       </Tr>
     </>
     
   )
 }
-
 const Alerta = styled.p`
-  text-align: center;
-  color:  white;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border-radius: 20px;
-  text-transform: capitalize;
-  background-color: ${props => props.error ? 'red' : 'blue'};
-  position: fixed;
-  top: 10%;
-  left: 22%;
-  width: 19rem;
+text-align: center;
+color:  white;
+padding-top: 5px;
+padding-bottom: 5px;
+border-radius: 20px;
+text-transform: capitalize;
+background-color: ${props => props.error ? 'red' : 'blue'};
+position: fixed;
+top: 10%;
+left: 22%;
+width: 19rem;
 `;
 
 const Icono = styled.td`
@@ -101,7 +96,15 @@ const Icono = styled.td`
 
 const Tr = styled.tr`
   text-align: left;
-  
-
+  background-color: #2c3034!important;
 `;
 
+const td = styled.td`
+background-color: #2c3034!important;
+`
+
+const Input = styled.input`
+background-color: #2c3034;
+border: #2c3034;
+color: white;
+`

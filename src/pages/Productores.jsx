@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { CardProductores } from '../components/CardProductores';
 import { agregarProductor, obtenerProductores, editarProductores, borrarProductores } from '../helpers/getAdmin';
+import bootstrap from 'bootstrap';
 
 const Productores = () => {
     const [productores, setProductores] = useState([]);
@@ -65,6 +66,7 @@ const Productores = () => {
         }
       }
   return (
+    <>
     <Div>
         <Titulo>Productores</Titulo>
 
@@ -103,24 +105,28 @@ const Productores = () => {
         }
         {/* -------------------------------------------- */}
 
-        <Table>
+        <Table >
           <Thead>
-            <Tr>
-              <th>Nombre</th>
-              <th>Correo</th>
-              <th>Editar</th>
-              <th>Eliminar</th>
-            </Tr>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Accion</th>
+            </tr>
           </Thead>
-          <tbody>
+          <Tbody>
             {/* <tr> */}
             {productores.length > 0 ? productores.map((cliente)=>(
                 <CardProductores cliente={cliente} onChange={onChange} />
             )):'no hay'}
             {/* </tr> */}
-        </tbody>
+          </Tbody>
         </Table>
     </Div>
+    {/*
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"/>  
+    */}
+    </>
   )
 }
 const Alerta = styled.p`
@@ -188,13 +194,20 @@ const Icono = styled.td`
 
 `;
 
+const Tbody = styled.tbody`
+border-collapse: collapse;
+`;
+
 const Titulo = styled.h2`
     color: black;
     text-align:center;
 `;
 
 const Thead = styled.thead`
-  /* background-color: red; */
+  background-color: #212529;
+  border-color: #32383e;
+  color: white;
+  border-collapse: collapse;
 `;
 
 const Tr = styled.tr`
@@ -207,7 +220,13 @@ const Table = styled.table`
   width: 120%;
   border: 1px gray  solid;
   padding: 5px 15px 5px 15px;
-  border-radius: 10px;
+  background-color: #212529;
+  border-color: #32383e;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 `;
 
 const Div = styled.div`
