@@ -9,7 +9,7 @@ import Clientes from '../pages/Clientes'
 import { AuthProvider } from '../context/AuthProvider'
 
 
-const Router = () => {
+const Router = () => {  
   return (
     <BrowserRouter>
     <AuthProvider>
