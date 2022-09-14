@@ -2,6 +2,7 @@ import { faCircleXmark, faPenToSquare } from '@fortawesome/free-regular-svg-icon
 import { faTrash, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { CardClientes } from '../components/CardClientes';
 import { agregarClientes, obtenerClientes, editarClientes, borrarClientes} from '../helpers/getAdmin';
@@ -9,10 +10,14 @@ import { agregarClientes, obtenerClientes, editarClientes, borrarClientes} from 
 const Clientes = () => {
     const [clientes, setClientes] = useState([]);
     const [activeModal, setActiveModal] = useState(false);
+    const navigate = useNavigate();
     const [alerta, setAlerta] = useState({msg:'', error:false})
     const [formValues, setFormValues] = useState({nombre: '', correo: '', password: ''});
     const {nombre, correo, password } = formValues;
     useEffect(() => {
+        if (localStorage.getItem("token") == "" ) {
+          navigate('/')
+        }
         const cargarClientes = async()=>{
           const respuesta = await obtenerClientes();
           console.log(respuesta)

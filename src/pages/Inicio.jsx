@@ -6,18 +6,14 @@ const Inicio = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (localStorage.getItem("token") == null ) {
+    if (localStorage.getItem("token") == "" ) {
       navigate('/')
     }
   })
 
-
-
-
-
   return (
     <Container>
-        <h1>Inicio</h1>
+        <Titulo>Inicio</Titulo>
         <Img src={grafico} alt="" />
     </Container>
   )
@@ -32,4 +28,9 @@ const Img = styled.img`
     object-fit: contain;
     width: 80%;
 `
+const Titulo = styled.h1`
+color: white;
+text-align:center;
+`;
+
 export default Inicio

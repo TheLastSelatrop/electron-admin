@@ -5,14 +5,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import { obtenerTransportistas } from '../helpers/getAdmin';
 import { CardTransportistas } from '../components/CardTransportistas';
+import { useNavigate } from 'react-router-dom';
 
 const Transportistas = () => {
     const [transportistas, setTransportistas] = useState([])
     const [activeModal, setActiveModal] = useState(false);
+    const navigate = useNavigate();
     const [alerta, setAlerta] = useState({msg:'', error:false})
     const [formValues, setFormValues] = useState({nombre: '', correo: '', password: ''});
     const {nombre, correo , password} = formValues;
     useEffect(() => {
+
+        if (localStorage.getItem("token") == "" ) {
+          navigate('/')
+        }
         const cargartransportistas = async()=>{
           const respuesta = await obtenerTransportistas();
           console.log(respuesta)

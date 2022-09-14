@@ -5,23 +5,28 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { CardProductores } from '../components/CardProductores';
 import { agregarProductor, obtenerProductores, editarProductores, borrarProductores } from '../helpers/getAdmin';
-import bootstrap from 'bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const Productores = () => {
     const [productores, setProductores] = useState([]);
     const [activeModal, setActiveModal] = useState(false);
+    const navigate = useNavigate();
     const [alerta, setAlerta] = useState({msg:'', error:false})
     const [formValues, setFormValues] = useState({nombre: '', correo: '', password: ''});
     const {nombre, correo , password} = formValues;
     useEffect(() => {
+
+        if (localStorage.getItem("token") == "" ) {
+          navigate('/')
+        }
         const cargarProductores = async()=>{
           const respuesta = await obtenerProductores();
           console.log(respuesta)
           setProductores(respuesta);
         }
-    
-        cargarProductores();
-      },[] )
+  
+      cargarProductores();
+    },[] )
             
       const RemoveProductores = async(productoresID)=>{
         await borrarProductores(productoresID)

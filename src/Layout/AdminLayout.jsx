@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 const AdminLayout = () => {
     const history = useNavigate();
     const logOut = () =>{
-        localStorage.clear();
+        localStorage.setItem("token","")
         history('/');
     }
   return (
