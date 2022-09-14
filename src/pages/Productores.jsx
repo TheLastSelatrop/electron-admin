@@ -70,12 +70,6 @@ const Productores = () => {
     <Div>
         <Titulo>Productores</Titulo>
 
-        <AgregarContainer>
-          <BotonAdd onClick={activateModal}> 
-            <FontAwesomeIcon icon={faUserPlus}/>
-            Crear Productor
-            </BotonAdd>
-        </AgregarContainer>
         {/* -------------------FORM------------------------ */}
         {activeModal && 
             <ContainerForm>
@@ -104,7 +98,6 @@ const Productores = () => {
             </ContainerForm>
         }
         {/* -------------------------------------------- */}
-
         <Table >
           <Thead>
             <tr>
@@ -121,6 +114,13 @@ const Productores = () => {
             {/* </tr> */}
           </Tbody>
         </Table>
+        <br/>
+        <AgregarContainer>
+          <BotonAdd onClick={activateModal}> 
+            <FontAwesomeIcon icon={faUserPlus}/>
+            Crear Productor
+            </BotonAdd>
+        </AgregarContainer>
     </Div>
     {/*
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"/>
@@ -199,7 +199,7 @@ border-collapse: collapse;
 `;
 
 const Titulo = styled.h2`
-    color: black;
+    color: white;
     text-align:center;
 `;
 

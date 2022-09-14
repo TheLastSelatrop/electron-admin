@@ -64,12 +64,6 @@ const Transportistas = () => {
     <Div>
         <Titulo>Transportistas</Titulo>
 
-        <AgregarContainer>
-          <BotonAdd onClick={activateModal}> 
-            <FontAwesomeIcon icon={faUserPlus}/>
-            Crear Productor
-            </BotonAdd>
-        </AgregarContainer>
         {/* -------------------FORM------------------------ */}
         {activeModal && 
             <ContainerForm>
@@ -115,6 +109,13 @@ const Transportistas = () => {
             {/* </tr> */}
         </tbody>
         </Table>
+        <br/>
+        <AgregarContainer>
+          <BotonAdd onClick={activateModal}> 
+            <FontAwesomeIcon icon={faUserPlus}/>
+            Crear Productor
+            </BotonAdd>
+        </AgregarContainer>
 
     </Div>
   )
@@ -190,7 +191,7 @@ border-collapse: collapse;
 `;
 
 const Titulo = styled.h2`
-    color: black;
+    color: white;
     text-align:center;
 `;
 

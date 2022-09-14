@@ -67,12 +67,6 @@ const Clientes = () => {
     <Div>
         <Titulo>Clientes</Titulo>
 
-        <AgregarContainer>
-          <BotonAdd onClick={activateModal}> 
-            <FontAwesomeIcon icon={faUserPlus}/>
-            Crear Clientes
-            </BotonAdd>
-        </AgregarContainer>
         {/* -------------------FORM------------------------ */}
         {activeModal && 
             <ContainerForm>
@@ -118,6 +112,13 @@ const Clientes = () => {
             {/* </tr> */}
         </tbody>
         </Table>
+        <br/>        
+        <AgregarContainer>
+          <BotonAdd onClick={activateModal}> 
+            <FontAwesomeIcon icon={faUserPlus}/>
+            Crear Clientes
+            </BotonAdd>
+        </AgregarContainer>
     </Div>
   )
 }
@@ -191,7 +192,7 @@ border-collapse: collapse;
 `;
 
 const Titulo = styled.h2`
-    color: black;
+    color: white;
     text-align:center;
 `;
 
