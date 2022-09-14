@@ -70,7 +70,7 @@ const SubtituloOpcion2 = styled.a`
 cursor: pointer;  
 text-decoration: none;
 color: white;
-background-color: red;
+background-color: #8E0000;
 -webkit-app-region: no-drag;
 padding: 5px 2px 5px 9px;
 border-top-left-radius: 5px;
