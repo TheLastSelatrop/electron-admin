@@ -46,7 +46,7 @@ const AdminLayout = () => {
                     </ContainerOpciones>
                 </div>
                 <div>
-                    <Tituloopcion>Account</Tituloopcion>
+                    <Tituloopcion>Cuenta</Tituloopcion>
                     <ContainerOpciones>
                         <SubtituloOpcion2 onClick={()=>{logOut()}} >Cerrar Sesion</SubtituloOpcion2>
                     </ContainerOpciones>
@@ -70,7 +70,14 @@ const SubtituloOpcion2 = styled.a`
 cursor: pointer;  
 text-decoration: none;
 color: white;
+background-color: red;
 -webkit-app-region: no-drag;
+padding: 5px 2px 5px 9px;
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+border-bottom-left-radius: 5px;
+border-bottom-right-radius: 5px;
+}
 `;
 
 const ContainerOpciones = styled.div`
