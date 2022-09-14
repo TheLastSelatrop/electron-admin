@@ -224,7 +224,7 @@ const Tr = styled.tr`
 const Table = styled.table`
   width: 120%;
   border: 1px gray  solid;
-  padding: 5px 15px 5px 15px;
+  padding: 10px 25px 15px 25px;
   background-color: #212529;
   border-color: #32383e;
   color: white;
